@@ -58,18 +58,17 @@ public class pmovementy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.transform.tag == "Player")
         {
-            player.transform.parent = other.transform;
+            other.transform.parent = transform;
         }
     }
 
-
-    void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.transform.tag == "Player")
         {
-            player.transform.parent = null;
+            other.transform.parent = null;
         }
     }
 }
