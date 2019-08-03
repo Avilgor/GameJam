@@ -36,6 +36,8 @@ public class pmovementy : MonoBehaviour
         }
     }
 
+
+
     void FixedUpdate()
     { 
         if (pup)

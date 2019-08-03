@@ -18,10 +18,12 @@ public class movement : MonoBehaviour
     bool jump;
     bool moveleft;
     bool moveright;
+    bool ascensor;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ascensor = false;
     }
 
     // Update is called once per frame
@@ -62,14 +64,22 @@ public class movement : MonoBehaviour
 
     }
 
-    /*
-    void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("platform"))
+        if (other.gameObject.CompareTag("Ascensor"))
         {
-            player.transform.parent = null;
+            ascensor = true;
         }
-    }*/
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ascensor"))
+        {
+            ascensor = false;
+        }
+    }
+
 
     private void FixedUpdate()
     {
@@ -97,6 +107,7 @@ public class movement : MonoBehaviour
 
         Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
+
         if (hit.collider != null)
         {
             grounded = true;
@@ -105,6 +116,7 @@ public class movement : MonoBehaviour
         {
             grounded = false;
         }
+
 
     }
 }
