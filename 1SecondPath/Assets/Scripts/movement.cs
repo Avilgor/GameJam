@@ -10,6 +10,7 @@ public class movement : MonoBehaviour
     public float jumpforce;
     public float speedmaxx;
     public LayerMask groundLayer;
+    public LayerMask playerLayer;
     Vector2 rayposition;
     Vector2 raydirection;
     public float raydistance;
@@ -36,7 +37,7 @@ public class movement : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W) && grounded || Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
         }
@@ -58,5 +59,12 @@ public class movement : MonoBehaviour
         {
             grounded = false;
         }
+
+
+
+    }
+    private void FixedUpdate()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, rb.velocity.y > 0);
     }
 }
