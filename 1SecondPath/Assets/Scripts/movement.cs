@@ -19,7 +19,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -60,9 +60,33 @@ public class movement : MonoBehaviour
             grounded = false;
         }
 
+        //Para el movimiento en plataformas movibles
+
+     
+
 
 
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        print("enter");
+        if (other.gameObject.tag == "platform")
+        {
+            transform.parent = other.transform;
+
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "platform")
+        {
+            transform.parent = null;
+
+        }
+    }
+
     private void FixedUpdate()
     {
         Physics2D.IgnoreLayerCollision(8, 9, rb.velocity.y > 0);
