@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour
         anim = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
         move = false;
-        StartCoroutine(WaitMove(3f));
+        StartCoroutine(WaitMove(2f));
     }
 
 
@@ -32,11 +32,13 @@ public class MovementController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 rb.velocity = new Vector3(0f, velocity * Time.timeScale, 0f);
+                anim.SetBool("Walk", false);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 rb.velocity = new Vector3(0f, -velocity * Time.timeScale, 0f);
+                anim.SetBool("Walk", false);
             }
 
             if (Input.GetKey(KeyCode.A))
