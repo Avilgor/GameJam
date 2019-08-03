@@ -14,6 +14,7 @@ public class Maze : MonoBehaviour
     GameObject mesh;
 
     GameObject player;
+    GameObject head;
 
     float timer;
     private int enter, exit;
@@ -22,6 +23,7 @@ public class Maze : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        head = GameObject.FindGameObjectWithTag("Goal");
         timer = 0f;
         rnd = new System.Random();
         enter = rnd.Next(0, Doors.Length);
@@ -52,6 +54,7 @@ public class Maze : MonoBehaviour
         doorWalls[enter].SetActive(false);
         doorWalls[exit].SetActive(false);
 
+        head.transform.position = new Vector3(Doors[exit].transform.position.x, Doors[exit].transform.position.y, -0.8f);
         player.transform.position = new Vector3(Doors[enter].transform.position.x,Doors[enter].transform.position.y+0.5f,-0.8f);
     }
 
