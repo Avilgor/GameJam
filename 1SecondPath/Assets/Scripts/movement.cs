@@ -68,24 +68,22 @@ public class movement : MonoBehaviour
 
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        print("enter");
         if (other.gameObject.tag == "platform")
         {
             transform.parent = other.transform;
-
         }
-    }
 
-    void OnTriggerExit2D(Collider2D other)
+    }
+    /*
+    void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "platform")
+        if (other.gameObject.CompareTag("platform"))
         {
-            transform.parent = null;
-
+            player.transform.parent = null;
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {

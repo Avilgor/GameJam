@@ -9,6 +9,7 @@ public class pmovementy : MonoBehaviour
     public float pspeedy;
     bool pup;
     Rigidbody2D rbp;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class pmovementy : MonoBehaviour
         rbp = GetComponent<Rigidbody2D>();
         pup = false;
         rbp.velocity = new Vector2(0, -0.1f);
+        player = FindObjectOfType<GameObject>();
     }
 
     // Update is called once per frame
@@ -48,7 +50,26 @@ public class pmovementy : MonoBehaviour
         }
 
 
+
+
         
 
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.transform.parent = other.transform;
+        }
+    }
+
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.transform.parent = null;
+        }
     }
 }
