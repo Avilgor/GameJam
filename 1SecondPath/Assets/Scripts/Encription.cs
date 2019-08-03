@@ -5,7 +5,7 @@ using System.Text;
 
 public class Encription
 { 
-    string EncriptDecript(string toEncrypt)
+    public string EncriptDecript(string toEncrypt)
     {        
         char []key = { 'K', 'C', 'Q', 'H', 'X', 'P' }; //Any chars will work, in an array of any size
         StringBuilder output = new StringBuilder();
