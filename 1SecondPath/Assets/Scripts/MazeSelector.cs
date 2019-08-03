@@ -13,6 +13,7 @@ public class MazeSelector : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         rnd = new System.Random();
         GameObject chosen = Instantiate(maze[rnd.Next(0, maze.Length)]);
     }
