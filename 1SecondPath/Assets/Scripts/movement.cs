@@ -9,6 +9,11 @@ public class movement : MonoBehaviour
     public float speedx;
     public float jumpforce;
     public float speedmaxx;
+    public LayerMask groundLayer;
+    Vector2 rayposition;
+    Vector2 raydirection;
+    public float raydistance;
+    bool grounded;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +39,24 @@ public class movement : MonoBehaviour
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
+        }
+
+
+        //aquí va lo de Raycast para el CheckGround
+
+        rayposition = transform.position;
+        raydirection = -transform.up;
+
+
+        Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
+        if (hit.collider != null)
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
         }
     }
 }

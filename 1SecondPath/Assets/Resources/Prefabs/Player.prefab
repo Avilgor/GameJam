@@ -163,5 +163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6380439622836928079}
   speedx: 0.3
-  jumpforce: 20
+  jumpforce: 1
   speedmaxx: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  raydistance: 0.1
