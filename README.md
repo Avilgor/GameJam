@@ -1,5 +1,5 @@
 # GameJam
-This game is made for a 2 days Game Jam, starte the 3/4/2019. 
+This game was made for a 2 days Game Jam, started in 3/4/2019. 
 
 # Collaborators
 - https://github.com/Avilgor
