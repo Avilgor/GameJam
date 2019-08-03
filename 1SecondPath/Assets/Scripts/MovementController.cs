@@ -8,47 +8,50 @@ public class MovementController : MonoBehaviour
     Animator anim;
     SpriteRenderer renderer;
     float velocity = 2f;
+    private bool move;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
+        move = false;
+        StartCoroutine(WaitMove(3f));
     }
 
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+        if (move)
         {
-            rb.velocity = new Vector3(0f, 0f, 0f);
-            //animations.Stop("RatWalk");
-        }
+            if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+            {
+                rb.velocity = new Vector3(0f, 0f, 0f);
+            }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            rb.velocity = new Vector3(0f, velocity * Time.timeScale, 0f);
-            //animations.Stop("RatWalk");
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.velocity = new Vector3(0f, velocity * Time.timeScale, 0f);
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.velocity = new Vector3(0f, -velocity * Time.timeScale, 0f);
-            //animations.Stop("RatWalk");
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.velocity = new Vector3(0f, -velocity * Time.timeScale, 0f);
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector3(-velocity * Time.timeScale, 0f, 0f);
-            //animations.Play("RatWalk");
-            renderer.flipX = true;
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.velocity = new Vector3(-velocity * Time.timeScale, 0f, 0f);
+                anim.SetBool("Walk", true);
+                renderer.flipX = true;
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
-            //animations.Play("RatWalk");
-            renderer.flipX = false;
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
+                anim.SetBool("Walk",true);
+                renderer.flipX = false;
+            }
         }
     }
 
@@ -58,5 +61,11 @@ public class MovementController : MonoBehaviour
         {
             
         }       
+    }
+
+    IEnumerator WaitMove(float time)
+    {
+        yield return new WaitForSeconds(time);
+        move = true;
     }
 }
