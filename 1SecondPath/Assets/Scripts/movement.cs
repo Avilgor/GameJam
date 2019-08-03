@@ -33,7 +33,7 @@ public class movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
-            rb.velocity += new Vector2(0, jumpforce);
+            rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
         }
     }
 }
