@@ -11,6 +11,7 @@ public class movement : MonoBehaviour
     public float speedmaxx;
     public LayerMask groundLayer;
     public LayerMask playerLayer;
+    public LayerMask ascensorLayer;
     Vector2 rayposition;
     Vector2 raydirection;
     public float raydistance;
@@ -106,9 +107,9 @@ public class movement : MonoBehaviour
 
 
         Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
-        RaycastHit2D hit = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
+        RaycastHit2D hitsuelo = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
 
-        if (hit.collider != null)
+        if (hitsuelo.collider != null)
         {
             grounded = true;
         }
@@ -116,7 +117,8 @@ public class movement : MonoBehaviour
         {
             grounded = false;
         }
-
-
     }
+
+
+
 }
