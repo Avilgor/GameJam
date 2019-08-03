@@ -250,6 +250,7 @@ MonoBehaviour:
   - {fileID: 426290649939979840}
   - {fileID: 426290649870647897}
   - {fileID: 426290648692293262}
+  mesh: {fileID: 8985521027321467321}
 --- !u!1 &8985521027321467321
 GameObject:
   m_ObjectHideFlags: 0

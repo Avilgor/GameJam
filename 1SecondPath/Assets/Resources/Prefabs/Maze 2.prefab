@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 4287068494729190935}
   - {fileID: 4287068494798287374}
   - {fileID: 4287068496589475545}
+  mesh: {fileID: 4766564081952399854}
 --- !u!1 &1308988833166017651
 GameObject:
   m_ObjectHideFlags: 0

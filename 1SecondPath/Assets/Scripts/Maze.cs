@@ -8,22 +8,22 @@ public class Maze : MonoBehaviour
 {
     [SerializeField]
     GameObject []Doors;
-    //[SerializeField]
-    //GameObject []objects;
+    [SerializeField]
+    GameObject mesh;
 
     GameObject player;
-    //GameObject center;
 
-    int enter, exit;
+    float timer;
+    private int enter, exit;
     private System.Random rnd;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        //center = GameObject.Find("ScriptHandler");
-
+        timer = 0f;
         rnd = new System.Random();
         enter = rnd.Next(0, Doors.Length);
+
         do
         {
             exit = rnd.Next(0, Doors.Length);
@@ -32,40 +32,20 @@ public class Maze : MonoBehaviour
         switch (enter)
         {
             case 0:
-                transform.Rotate(0f, 0f, 0f);
-                /*for (int i = 0; i < objects.Length; i++)
-                {
-                    objects[i].transform.Rotate(0f, 0f, 0f);
-                    //objects[i].transform.position = center.transform.position;
-                }               */
+                transform.Rotate(0f, 0f, 0f);      
                 Debug.Log("Door 1");
                 break;              
 
             case 1:
                 transform.Rotate(0f, 0f, 90f);
-                /*for (int i = 0; i < objects.Length; i++)
-                {
-                    objects[i].transform.Rotate(0f, -90f, 0f);
-                    //objects[i].transform.position = center.transform.position;
-                }*/
                 Debug.Log("Door 2");
                 break;
             case 2:
-                transform.Rotate(0f, 0f, 180f);
-                /*for (int i = 0; i < objects.Length; i++)
-                {
-                    objects[i].transform.Rotate(0f, -180f, 0f);
-                    //objects[i].transform.position = center.transform.position;
-                }*/          
+                transform.Rotate(0f, 0f, 180f);        
                 Debug.Log("Door 3");
                 break;
             case 3:
                 transform.Rotate(0f, 0f, 270f);
-                /*for (int i = 0; i < objects.Length; i++)
-                {
-                    objects[i].transform.Rotate(0f, -270f, 0f);
-                    //objects[i].transform.position = center.transform.position;
-                }/*/
                 Debug.Log("Door 4");
                 break;
         }
@@ -75,6 +55,10 @@ public class Maze : MonoBehaviour
     
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer >= 3)
+        {
+            mesh.SetActive(false);
+        }
     }
 }
