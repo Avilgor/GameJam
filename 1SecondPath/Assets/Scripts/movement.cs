@@ -15,7 +15,9 @@ public class movement : MonoBehaviour
     Vector2 raydirection;
     public float raydistance;
     bool grounded;
-
+    bool jump;
+    bool moveleft;
+    bool moveright;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,18 +30,20 @@ public class movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D) && rb.velocity.x < speedmaxx)
         {
-            rb.velocity += new Vector2 (speedx, 0f);
+            moveleft = false;
+            moveright = true;
         }
 
         else if (Input.GetKey(KeyCode.A) && rb.velocity.x > -speedmaxx)
         {
-            rb.velocity += new Vector2(-speedx, 0f);
+            moveright = false;
+            moveleft = true;
         }
 
 
         if (Input.GetKeyDown(KeyCode.W) && grounded || Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
+            jump = true;
         }
 
 
@@ -47,6 +51,48 @@ public class movement : MonoBehaviour
 
         rayposition = transform.position;
         raydirection = -transform.up;
+
+
+
+        //Para el movimiento en plataformas movibles
+
+     
+
+
+
+    }
+
+    /*
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("platform"))
+        {
+            player.transform.parent = null;
+        }
+    }*/
+
+    private void FixedUpdate()
+    {
+        Physics2D.IgnoreLayerCollision(8, 9, rb.velocity.y > 0);
+
+        if (jump)
+        {
+            rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
+            jump = false;
+        }
+
+        if (moveright)
+
+        {
+            rb.velocity += new Vector2(speedx, 0f);
+            moveright = false;
+        }
+
+        if (moveleft)
+        {
+            rb.velocity += new Vector2(-speedx, 0f);
+            moveleft = false;
+        }
 
 
         Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
@@ -60,33 +106,5 @@ public class movement : MonoBehaviour
             grounded = false;
         }
 
-        //Para el movimiento en plataformas movibles
-
-     
-
-
-
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "platform")
-        {
-            transform.parent = other.transform;
-        }
-
-    }
-    /*
-    void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("platform"))
-        {
-            player.transform.parent = null;
-        }
-    }*/
-
-    private void FixedUpdate()
-    {
-        Physics2D.IgnoreLayerCollision(8, 9, rb.velocity.y > 0);
     }
 }

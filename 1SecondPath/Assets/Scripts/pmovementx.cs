@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class pmovementx : MonoBehaviour
 {
+
     public float pmaxx;
     public float pminx;
-    public float pspeedx;
+    public float pspeedy;
     bool pright;
     Rigidbody2D rbp;
+    bool pmoveright;
 
     // Start is called before the first frame update
     void Start()
     {
         rbp = GetComponent<Rigidbody2D>();
-        pright = true;
-        rbp.velocity = new Vector2(0.1f,0);
+        pright = false;
     }
 
     // Update is called once per frame
@@ -23,29 +24,28 @@ public class pmovementx : MonoBehaviour
     {
         if (transform.position.x >= pmaxx && pright)
         {
-            rbp.velocity = new Vector2(-pspeedx, 0);
+            pmoveright = false;
             pright = false;
-            print("right");
-            
+
         }
 
         else if (transform.position.x <= pminx && !pright)
         {
-            rbp.velocity = new Vector2(pspeedx, 0);
+            pmoveright = true;
             pright = true;
         }
+    }
 
-        /*if (transform.position.y >= pmaxy)
+    void FixedUpdate()
+    {
+        if (pright)
         {
-            rbp.velocity = new Vector2(0, -pspeedy);
+            rbp.MovePosition(transform.position + transform.right * Time.fixedDeltaTime);
         }
 
-        else if (transform.position.y <= pminy)
+        if (!pright)
         {
-            rbp.velocity = new Vector2(0, pspeedy);
+            rbp.MovePosition(transform.position + -transform.right * Time.fixedDeltaTime);
         }
-        */
-
-
     }
 }
