@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8198704433169090537}
   - component: {fileID: 8768532754777124688}
   - component: {fileID: 4617806918602483219}
+  - component: {fileID: 523744592}
   m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
@@ -99,3 +100,17 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.08, y: 0}
   - {x: 0.08, y: 0}
+--- !u!114 &523744592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062620747009478041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9648b17834718d4b958929e95c874e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  sprender: {fileID: 8768532754777124688}
