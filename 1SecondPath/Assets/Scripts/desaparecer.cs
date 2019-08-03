@@ -9,14 +9,14 @@ public class desaparecer : MonoBehaviour
     public SpriteRenderer sprender;
     float timer;
     EdgeCollider2D edgy;
+    public LayerMask playerLayer;
 
-    Rigidbody2D rbp;
+
 
     // Start is called before the first frame update
     void Start()
     {
         sprender = GetComponent<SpriteRenderer>();
-        rbp = GetComponent<Rigidbody2D>();
         edgy = GetComponent<EdgeCollider2D>();
     }
 
@@ -24,10 +24,19 @@ public class desaparecer : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= time && !edgy.IsTouchingLayers(9))
+
+        if (timer >= time && !edgy.IsTouchingLayers(playerLayer))
         {
             sprender.enabled = false;
         }
+
+        else if (timer >= time && edgy.IsTouchingLayers(playerLayer))
+        {
+            sprender.enabled = true;
+            timer = 0;
+            
+        }
+
         if (edgy.IsTouchingLayers(9))
         {
             print("está tocando");
