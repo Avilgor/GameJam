@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [SerializeField]
+    GameObject maze;
+
     Rigidbody rb;
     Animator anim;
     SpriteRenderer renderer;
@@ -57,11 +60,12 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Goal")
         {
-            
+            maze.GetComponent<MazeController>().goal = true;
+            Destroy(collision.gameObject);
         }       
     }
 
