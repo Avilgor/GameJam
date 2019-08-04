@@ -749,11 +749,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6380439622836928078, guid: 2a6effef213e8a04f8086b177ad88040,
-        type: 3}
-      propertyPath: ascensorLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6effef213e8a04f8086b177ad88040, type: 3}
 --- !u!4 &1228654334 stripped

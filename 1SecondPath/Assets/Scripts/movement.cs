@@ -26,6 +26,7 @@ public class movement : MonoBehaviour
     float timer;
     public ParticleSystem jumpEffect;
     int escenaActual;
+    bool jumping;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,8 @@ public class movement : MonoBehaviour
         Globals.death = false;
         timer = 0;
         escenaActual = SceneManager.GetActiveScene().buildIndex;
+        jump = false;
+        jumping = false;
     }
 
     // Update is called once per frame
@@ -64,7 +67,7 @@ public class movement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W) && grounded && !jump|| Input.GetKeyDown(KeyCode.Space) && grounded && !jump && timer > 1)
+        if (Input.GetKeyDown(KeyCode.W) && grounded && !jump && timer > 1 || Input.GetKeyDown(KeyCode.Space) && grounded && !jump && timer > 1)
         {
             jump = true;
         }
@@ -115,6 +118,7 @@ public class movement : MonoBehaviour
             jumpEffect.Play();
             rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
             jump = false;
+            jumping = true;
         }
 
         if (moveright)
@@ -151,10 +155,11 @@ public class movement : MonoBehaviour
         RaycastHit2D hitascensor1= Physics2D.Raycast(rayposition + new Vector2(0.17f, 0), raydirection, raydistance, ascensorLayer);
         RaycastHit2D hitascensor2= Physics2D.Raycast(rayposition + new Vector2(-0.17f, 0), raydirection, raydistance, ascensorLayer);
 
-        if (hitsuelo.collider != null && rb.velocity.y > -1 || hitsuelo1.collider != null && rb.velocity.y > -1 || hitsuelo2.collider != null && rb.velocity.y > -1
-            || hitascensor.collider != null && rb.velocity.y > -1 || hitascensor1.collider != null && rb.velocity.y > -1 || hitascensor2.collider != null && rb.velocity.y > -1)
+        if (hitsuelo.collider != null  || hitsuelo1.collider != null  || hitsuelo2.collider != null 
+            || hitascensor.collider != null  || hitascensor1.collider != null  || hitascensor2.collider != null )
         {
             grounded = true;
+            jumping = false;
         }
         else
         {
