@@ -11,7 +11,6 @@ public class movement : MonoBehaviour
     public float speedmaxx;
     public LayerMask groundLayer;
     public LayerMask playerLayer;
-    public LayerMask ascensorLayer;
     Vector2 rayposition;
     Vector2 raydirection;
     public float raydistance;
@@ -19,6 +18,7 @@ public class movement : MonoBehaviour
     bool jump;
     bool moveleft;
     bool moveright;
+    bool stop;
     bool ascensor;
     // Start is called before the first frame update
     void Start()
@@ -31,16 +31,26 @@ public class movement : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.D) && rb.velocity.x < speedmaxx)
+        if (Input.GetKey(KeyCode.D) && rb.velocity.x <= speedmaxx)
         {
             moveleft = false;
             moveright = true;
+            stop = false;
         }
 
-        else if (Input.GetKey(KeyCode.A) && rb.velocity.x > -speedmaxx)
+        else if (Input.GetKey(KeyCode.A) && rb.velocity.x >= -speedmaxx)
         {
             moveright = false;
             moveleft = true;
+            stop = false;
+        }
+
+        else if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            print("stop");
+            stop = true;
+            moveright = false;
+            moveleft = false;
         }
 
 
@@ -65,21 +75,6 @@ public class movement : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ascensor"))
-        {
-            ascensor = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Ascensor"))
-        {
-            ascensor = false;
-        }
-    }
 
 
     private void FixedUpdate()
@@ -99,10 +94,20 @@ public class movement : MonoBehaviour
             moveright = false;
         }
 
-        if (moveleft)
+        else if (moveleft)
         {
             rb.velocity += new Vector2(-speedx, 0f);
             moveleft = false;
+        }
+
+        else if (stop && grounded)
+        {
+            rb.velocity -= new Vector2 (0.12f * rb.velocity.x, 0);
+        }
+
+        else if (stop && !grounded)
+        {
+            rb.velocity -= new Vector2(0.04f * rb.velocity.x, 0);
         }
 
 
