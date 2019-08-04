@@ -13,6 +13,8 @@ public class desaparecerEnemigo : MonoBehaviour
     public LayerMask playerLayer;
     public Animator anim;
     int escenaActual;
+    public ParticleSystem effect;
+    
 
 
 
@@ -28,22 +30,17 @@ public class desaparecerEnemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
 
-        if (timer >= time && !boxyE.IsTouchingLayers(playerLayer))
+        if (timer >= time && !boxyE.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time)
         {
             anim.enabled = false;
             sprender.enabled = false;
         }
 
-        else if (timer >= time && boxyE.IsTouchingLayers(playerLayer))
+        else
         {
             sprender.enabled = true;
-            anim.enabled = true;
-            timer = 0;
-
         }
-
 
 
     }
@@ -59,7 +56,17 @@ public class desaparecerEnemigo : MonoBehaviour
 
     IEnumerator muerte()
     {
+        Globals.globaltimerR = 0;
+        sprender.enabled = true;
+        anim.enabled = true;
+        timer = 0;
+        effect.Play();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(escenaActual);
+    }
+
+    private void FixedUpdate()
+    {
+        timer += Time.deltaTime;
     }
 }

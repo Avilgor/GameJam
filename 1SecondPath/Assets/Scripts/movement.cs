@@ -56,7 +56,7 @@ public class movement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W) && grounded || Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.W) && grounded && !jump|| Input.GetKeyDown(KeyCode.Space) && grounded && !jump)
         {
             jump = true;
         }
@@ -69,7 +69,7 @@ public class movement : MonoBehaviour
 
         //aquí va lo de Raycast para el CheckGround
 
-        rayposition = transform.position;
+        rayposition = transform.position + new Vector3 (0, 0.1f, 0);
         raydirection = -transform.up;
 
 
@@ -126,7 +126,7 @@ public class movement : MonoBehaviour
         Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
         RaycastHit2D hitsuelo = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
 
-        if (hitsuelo.collider != null)
+        if (hitsuelo.collider != null && rb.velocity.y > -1)
         {
             grounded = true;
         }
