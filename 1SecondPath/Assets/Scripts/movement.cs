@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class movement : MonoBehaviour
     bool ascensor;
     float timer;
     public ParticleSystem jumpEffect;
+    int escenaActual;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class movement : MonoBehaviour
         ascensor = false;
         Globals.death = false;
         timer = 0;
+        escenaActual = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -70,6 +73,10 @@ public class movement : MonoBehaviour
             StartCoroutine("Drop");
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(escenaActual);
+        }
 
         //aquí va lo de Raycast para el CheckGround
 
