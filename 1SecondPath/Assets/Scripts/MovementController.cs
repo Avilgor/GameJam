@@ -8,16 +8,19 @@ public class MovementController : MonoBehaviour
     GameObject maze;
     [SerializeField]
     GameObject key;
+    [SerializeField]
+    AudioClip clip;
 
     Rigidbody rb;
-    //SpriteRenderer renderer;
+    AudioSource audio;
+    
     float velocity = 2f;
     private bool move;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //renderer = GetComponent<SpriteRenderer>();
+        audio= GetComponent<AudioSource>();
         move = false;
         StartCoroutine(WaitMove(2f));
     }
@@ -49,13 +52,11 @@ public class MovementController : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-velocity * Time.timeScale, 0f, 0f);
-                //renderer.flipX = true;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
-                //renderer.flipX = false;
             }
         }
     }
@@ -68,6 +69,14 @@ public class MovementController : MonoBehaviour
             maze.GetComponent<MazeController>().goal = true;           
             Destroy(collision.gameObject);
         }       
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Wall")
+        {
+            audio.PlayOneShot(clip);
+        }
     }
 
     IEnumerator WaitMove(float time)
