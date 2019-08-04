@@ -6,6 +6,7 @@ public class movement : MonoBehaviour
 {
 
     public Rigidbody2D rb;
+    public BoxCollider2D bc;
     public float speedx;
     public float jumpforce;
     public float speedmaxx;
@@ -24,6 +25,7 @@ public class movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
         ascensor = false;
     }
 
@@ -59,6 +61,11 @@ public class movement : MonoBehaviour
             jump = true;
         }
 
+        else if (Input.GetKeyDown(KeyCode.S) && grounded)
+        {
+            StartCoroutine("Drop");
+        }
+
 
         //aquí va lo de Raycast para el CheckGround
 
@@ -75,7 +82,12 @@ public class movement : MonoBehaviour
 
     }
 
-
+    IEnumerator Drop()
+    {
+        bc.enabled = false;
+        yield return new WaitForSeconds(0.4f);
+        bc.enabled = true;
+    }
 
     private void FixedUpdate()
     {
@@ -123,6 +135,8 @@ public class movement : MonoBehaviour
             grounded = false;
         }
     }
+
+
 
 
 
