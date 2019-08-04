@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 491326059}
   - component: {fileID: 491326058}
   m_Layer: 0
-  m_Name: malo_0
+  m_Name: malo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8128220938807884072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.6333404, y: 0.44713113, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
     m_Bits: 512
   anim: {fileID: 747888920}
   effect: {fileID: 491326059}
+  death: 0
 --- !u!198 &491326059
 ParticleSystem:
   m_ObjectHideFlags: 0

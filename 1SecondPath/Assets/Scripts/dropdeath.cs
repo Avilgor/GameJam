@@ -29,8 +29,10 @@ public class dropdeath : MonoBehaviour
 
     IEnumerator muerte()
     {
+        Globals.death = true;
         Globals.globaltimerR = 0;
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(escenaActual);
+        Globals.death = false;
     }
 }

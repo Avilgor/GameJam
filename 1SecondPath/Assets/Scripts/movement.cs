@@ -21,26 +21,31 @@ public class movement : MonoBehaviour
     bool moveright;
     bool stop;
     bool ascensor;
+    float timer;
+    public ParticleSystem jumpEffect;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         ascensor = false;
+        Globals.death = false;
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.D) && rb.velocity.x <= speedmaxx)
+        if (Input.GetKey(KeyCode.D) && rb.velocity.x <= speedmaxx && timer > 1 )
         {
             moveleft = false;
             moveright = true;
             stop = false;
         }
 
-        else if (Input.GetKey(KeyCode.A) && rb.velocity.x >= -speedmaxx)
+        else if (Input.GetKey(KeyCode.A) && rb.velocity.x >= -speedmaxx && timer > 1)
         {
             moveright = false;
             moveleft = true;
@@ -49,19 +54,18 @@ public class movement : MonoBehaviour
 
         else if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
-            print("stop");
             stop = true;
             moveright = false;
             moveleft = false;
         }
 
 
-        if (Input.GetKeyDown(KeyCode.W) && grounded && !jump|| Input.GetKeyDown(KeyCode.Space) && grounded && !jump)
+        if (Input.GetKeyDown(KeyCode.W) && grounded && !jump|| Input.GetKeyDown(KeyCode.Space) && grounded && !jump && timer > 1)
         {
             jump = true;
         }
 
-        else if (Input.GetKeyDown(KeyCode.S) && grounded)
+        else if (Input.GetKeyDown(KeyCode.S) && grounded && timer > 1)
         {
             StartCoroutine("Drop");
         }
@@ -95,6 +99,7 @@ public class movement : MonoBehaviour
 
         if (jump)
         {
+            jumpEffect.Play();
             rb.AddForce(transform.up * jumpforce, ForceMode2D.Impulse);
             jump = false;
         }
@@ -124,9 +129,13 @@ public class movement : MonoBehaviour
 
 
         Debug.DrawRay(rayposition, raydirection * raydistance, Color.green);
+        Debug.DrawRay(rayposition + new Vector2(0.17f, 0), raydirection * raydistance, Color.red);
+        Debug.DrawRay(rayposition + new Vector2(-0.17f, 0), raydirection * raydistance, Color.cyan);
         RaycastHit2D hitsuelo = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
+        RaycastHit2D hitsuelo1 = Physics2D.Raycast(rayposition + new Vector2(0.17f, 0), raydirection, raydistance, groundLayer);
+        RaycastHit2D hitsuelo2 = Physics2D.Raycast(rayposition + new Vector2(-0.17f, 0), raydirection, raydistance, groundLayer);
 
-        if (hitsuelo.collider != null && rb.velocity.y > -1)
+        if (hitsuelo.collider != null && rb.velocity.y > -1 || hitsuelo1.collider != null && rb.velocity.y > -1 || hitsuelo2.collider != null && rb.velocity.y > -1 )
         {
             grounded = true;
         }

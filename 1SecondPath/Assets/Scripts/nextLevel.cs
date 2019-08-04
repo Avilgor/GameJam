@@ -31,6 +31,7 @@ public class nextLevel : MonoBehaviour
 
     IEnumerator next ()
     {
+        Globals.death = true;
         Globals.globaltimerR = 0;
         effect.Play();
         yield return new WaitForSeconds(1f);
