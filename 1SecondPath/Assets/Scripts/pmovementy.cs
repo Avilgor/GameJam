@@ -11,6 +11,8 @@ public class pmovementy : MonoBehaviour
     bool pup;
     Rigidbody2D rbp;
     bool pmoveup;
+    public LayerMask playerLayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,11 @@ public class pmovementy : MonoBehaviour
             pmoveup = true;
             pup = true;
         }
+
+
+
+
+
     }
 
     /*void ConnectTo(Rigidbody2D player)
@@ -49,10 +56,10 @@ public class pmovementy : MonoBehaviour
             ConnectTo(montarse.collider.GetComponent<Rigidbody2D>());
         }
     }*/
-    
+
 
     void FixedUpdate()
-    { 
+    {
         if (pup)
         {
             rbp.MovePosition(transform.position + transform.up * Time.fixedDeltaTime);
@@ -62,5 +69,9 @@ public class pmovementy : MonoBehaviour
         {
             rbp.MovePosition(transform.position + -transform.up * Time.fixedDeltaTime);
         }
+
+
+     
+
     }
 }

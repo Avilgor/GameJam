@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7749339667054333586}
   - component: {fileID: 7204808832742516267}
-  - component: {fileID: 1895040591861873707}
   - component: {fileID: 1895040591104416740}
   - component: {fileID: 5651533825054934241}
   - component: {fileID: 3143388053906652264}
+  - component: {fileID: 1269504463}
   m_Layer: 8
   m_Name: PlatformySmall
   m_TagString: platform
@@ -84,23 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1895040591861873707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5651533825054934242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9648b17834718d4b958929e95c874e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 1
-  sprender: {fileID: 7204808832742516267}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!50 &1895040591104416740
 Rigidbody2D:
   serializedVersion: 4
@@ -137,6 +120,9 @@ MonoBehaviour:
   pmaxy: 3
   pminy: 0
   pspeedy: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!68 &3143388053906652264
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +141,21 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.8399999, y: 0}
   - {x: 0.8399999, y: 0}
+--- !u!114 &1269504463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651533825054934242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2a7df3863e57d40a7795952931584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  sprender: {fileID: 7204808832742516267}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  raydistance: 0.3
