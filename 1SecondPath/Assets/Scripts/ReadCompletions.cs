@@ -10,9 +10,13 @@ public class ReadCompletions : MonoBehaviour
 {
     void Start()
     {
+        string localPath = Application.dataPath + "/Save/SaveData.sav";
+        if (!Directory.Exists(Application.dataPath + "/Save"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Save");
+        }              
         Encription decript = new Encription();
-        string localPath = Application.dataPath + "/StreamingAssets/SaveData.sav";
-
+        
         if (!File.Exists(localPath))
         {
             StreamWriter writer = new StreamWriter(localPath);
