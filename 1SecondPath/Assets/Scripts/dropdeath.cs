@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class nextLevel : MonoBehaviour
+public class dropdeath : MonoBehaviour
 {
-
     int escenaActual;
-    public ParticleSystem effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +18,19 @@ public class nextLevel : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
-            StartCoroutine("next");
+            Destroy(collision.gameObject);
+            StartCoroutine("muerte");
         }
     }
 
-    IEnumerator next ()
+    IEnumerator muerte()
     {
         Globals.globaltimerR = 0;
-        effect.Play();
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(escenaActual + 1);
+        SceneManager.LoadScene(escenaActual);
     }
 }
