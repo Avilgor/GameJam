@@ -12,6 +12,7 @@ public class desaparecerEnemigo : MonoBehaviour
     BoxCollider2D boxyE;
     public LayerMask playerLayer;
     public Animator anim;
+    int escenaActual;
 
 
 
