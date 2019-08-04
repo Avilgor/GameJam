@@ -1,5 +1,5 @@
 # GameJam
-This game was made for a 2 days Game Jam, started in 3/4/2019. 
+This game was made for a 2 days Game Jam in itch.io (GMTK Game Jam 2019), started in 2/4/2019. 
 
 # Description
 
