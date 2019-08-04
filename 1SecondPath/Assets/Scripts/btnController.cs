@@ -4,13 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class btnController : MonoBehaviour
-{
-    public void playJump()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void playJump()
+{ 
+    public void playJump() 
     {
         SceneManager.LoadScene(3);
     }
