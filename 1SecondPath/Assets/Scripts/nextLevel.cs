@@ -7,6 +7,7 @@ public class nextLevel : MonoBehaviour
 {
 
     int escenaActual;
+    public ParticleSystem effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,17 @@ public class nextLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene (escenaActual + 1);
+            Destroy(other.gameObject);
+            StartCoroutine("next");
         }
+    }
+
+    IEnumerator next ()
+    {
+        Globals.death = true;
+        Globals.globaltimerR = 0;
+        effect.Play();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(escenaActual + 1);
     }
 }

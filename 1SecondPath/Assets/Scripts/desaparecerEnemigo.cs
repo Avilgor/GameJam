@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class desaparecerEnemigo : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class desaparecerEnemigo : MonoBehaviour
     BoxCollider2D boxyE;
     public LayerMask playerLayer;
     public Animator anim;
+    int escenaActual;
+    public ParticleSystem effect;
+    public bool death;
+    
 
 
 
@@ -20,28 +25,51 @@ public class desaparecerEnemigo : MonoBehaviour
         sprender = GetComponent<SpriteRenderer>();
         boxyE = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        escenaActual = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
 
-        if (timer >= time && !boxyE.IsTouchingLayers(playerLayer))
+        if (timer >= time && !boxyE.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time && !Globals.death)
         {
             anim.enabled = false;
             sprender.enabled = false;
         }
 
-        else if (timer >= time && boxyE.IsTouchingLayers(playerLayer))
+        else
         {
             sprender.enabled = true;
-            anim.enabled = true;
-            timer = 0;
-
         }
 
 
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine ("muerte");
+        }
+    }
+
+    IEnumerator muerte()
+    {
+        Globals.globaltimerR = 0;
+        Globals.death = true;
+        sprender.enabled = true;
+        anim.enabled = true;
+        timer = 0;
+        effect.Play();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(escenaActual);
+        Globals.death = false;
+    }
+
+    private void FixedUpdate()
+    {
+        timer += Time.deltaTime;
     }
 }
