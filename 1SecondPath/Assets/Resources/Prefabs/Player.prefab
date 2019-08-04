@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -714404305
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4137739278998905569, guid: 22b92235a573eb2449de530954c53862,
     type: 3}
@@ -131,6 +131,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  ascensorLayer:
+    serializedVersion: 2
+    m_Bits: 0
   raydistance: 0.13
   jumpEffect: {fileID: 991837740}
 --- !u!61 &980693633

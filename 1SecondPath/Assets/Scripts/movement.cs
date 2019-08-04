@@ -13,6 +13,7 @@ public class movement : MonoBehaviour
     public float speedmaxx;
     public LayerMask groundLayer;
     public LayerMask playerLayer;
+    public LayerMask ascensorLayer;
     Vector2 rayposition;
     Vector2 raydirection;
     public float raydistance;
@@ -78,9 +79,9 @@ public class movement : MonoBehaviour
             SceneManager.LoadScene(escenaActual);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         //aquí va lo de Raycast para el CheckGround
@@ -146,8 +147,12 @@ public class movement : MonoBehaviour
         RaycastHit2D hitsuelo = Physics2D.Raycast(rayposition, raydirection, raydistance, groundLayer);
         RaycastHit2D hitsuelo1 = Physics2D.Raycast(rayposition + new Vector2(0.17f, 0), raydirection, raydistance, groundLayer);
         RaycastHit2D hitsuelo2 = Physics2D.Raycast(rayposition + new Vector2(-0.17f, 0), raydirection, raydistance, groundLayer);
+        RaycastHit2D hitascensor = Physics2D.Raycast(rayposition, raydirection, raydistance, ascensorLayer);
+        RaycastHit2D hitascensor1= Physics2D.Raycast(rayposition + new Vector2(0.17f, 0), raydirection, raydistance, ascensorLayer);
+        RaycastHit2D hitascensor2= Physics2D.Raycast(rayposition + new Vector2(-0.17f, 0), raydirection, raydistance, ascensorLayer);
 
-        if (hitsuelo.collider != null && rb.velocity.y > -1 || hitsuelo1.collider != null && rb.velocity.y > -1 || hitsuelo2.collider != null && rb.velocity.y > -1 )
+        if (hitsuelo.collider != null && rb.velocity.y > -1 || hitsuelo1.collider != null && rb.velocity.y > -1 || hitsuelo2.collider != null && rb.velocity.y > -1
+            || hitascensor.collider != null && rb.velocity.y > -1 || hitascensor1.collider != null && rb.velocity.y > -1 || hitascensor2.collider != null && rb.velocity.y > -1)
         {
             grounded = true;
         }
