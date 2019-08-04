@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class btnController : MonoBehaviour
-{
-    public void playJump()
+{ 
+    public void playJump() 
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void playMaze()

@@ -49,6 +49,6 @@ public class MazeController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Cursor.visible = true;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
