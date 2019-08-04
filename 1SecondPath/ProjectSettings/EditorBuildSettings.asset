@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nivel5R.unity
     guid: 71a570112538a5942962bfac38bf27c2
+  - enabled: 1
+    path: Assets/Scenes/nivel6R.unity
+    guid: d81a14428b2fe104b8fbe9fd14720a4e
+  - enabled: 1
+    path: Assets/Scenes/nivel7R.unity
+    guid: c75e6276f5812074baabee215b3d21bc
   m_configObjects: {}
