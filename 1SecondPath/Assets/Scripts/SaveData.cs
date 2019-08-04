@@ -10,7 +10,7 @@ public class SaveData : MonoBehaviour
     {
         Encription encript = new Encription();
         Globals.mazeWins++;
-        string localPath = Application.dataPath + "/StreamingAssets/SaveData.txt";
+        string localPath = Application.dataPath + "/StreamingAssets/SaveData.sav";
         StreamWriter writer = new StreamWriter(localPath);
         writer.WriteLine(encript.EncriptDecript("You finished the maze /"+Globals.mazeWins+"/ times!"));
         writer.Close();

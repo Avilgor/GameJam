@@ -11,20 +11,20 @@ public class ReadCompletions : MonoBehaviour
     void Start()
     {
         Encription decript = new Encription();
-        string localPath = Application.dataPath + "/StreamingAssets/SaveData.txt";
+        string localPath = Application.dataPath + "/StreamingAssets/SaveData.sav";
+
         if (!File.Exists(localPath))
         {
             StreamWriter writer = new StreamWriter(localPath);
             writer.Write(decript.EncriptDecript("You finished the maze /0/ times!"));
             writer.Close();
         }
+        //try
+        //{
         StreamReader reader = new StreamReader(localPath);
-        string []output = decript.EncriptDecript(reader.ReadLine()).Split('/');
-        Debug.Log(output[0]);
-        Debug.Log(output[1]);
-        Debug.Log(output[2]);
+        string[] output = decript.EncriptDecript(reader.ReadLine()).Split('/');
         reader.Close();
         GetComponent<Text>().text = output[0] + output[1] + output[2];
-        Globals.mazeWins = Int32.Parse(output[2]);
+        Globals.mazeWins = Int32.Parse(output[1]);
     }
 }
