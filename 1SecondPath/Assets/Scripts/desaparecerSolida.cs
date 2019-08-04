@@ -50,7 +50,6 @@ public class desaparecerSolida : MonoBehaviour
     private void FixedUpdate()
     {
         timer += Time.deltaTime;
-        Globals.globaltimerR += Time.deltaTime;
     }
 }
 

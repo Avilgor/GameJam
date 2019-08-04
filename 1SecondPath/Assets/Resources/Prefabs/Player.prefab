@@ -133,7 +133,7 @@ MonoBehaviour:
     m_Bits: 512
   ascensorLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   raydistance: 0.13
   jumpEffect: {fileID: 991837740}
 --- !u!61 &980693633

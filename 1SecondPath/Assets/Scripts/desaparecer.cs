@@ -26,7 +26,7 @@ public class desaparecer : MonoBehaviour
     void Update()
     {
 
-        if (timer >= time && !edgy.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time && !Globals.death)
+        if (timer >= time && !edgy.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time && !Globals.death )
         {
             sprender.enabled = false;
         }
@@ -49,7 +49,15 @@ public class desaparecer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!Globals.timerstop)
+        {
+            Globals.globaltimerR += Time.deltaTime;
+        }
+        else
+        {
+            Globals.globaltimerR = 0;
+        }
+
         timer += Time.deltaTime;
-        Globals.globaltimerR += Time.deltaTime;
     }
 }
