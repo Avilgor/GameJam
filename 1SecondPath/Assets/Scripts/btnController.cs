@@ -5,14 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class btnController : MonoBehaviour
 {
-    public void playJump()
-    {
-        SceneManager.LoadScene(1);
-    }
-
     public void playMaze()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()

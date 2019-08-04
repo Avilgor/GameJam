@@ -18,38 +18,26 @@ public class desaparecer : MonoBehaviour
     {
         sprender = GetComponent<SpriteRenderer>();
         edgy = GetComponent<EdgeCollider2D>();
-        timer = 0;
-        Globals.globaltimerR = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
 
-        if (timer >= time && !edgy.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time && !Globals.death)
+        if (timer >= time && !edgy.IsTouchingLayers(playerLayer))
         {
             sprender.enabled = false;
         }
 
-        else if (timer >= time && edgy.IsTouchingLayers(playerLayer) && Globals.globaltimerR >= time && !Globals.death)
+        else if (timer >= time && edgy.IsTouchingLayers(playerLayer))
         {
             sprender.enabled = true;
             timer = 0;
             
         }
-        
-        else
-        {
-            sprender.enabled = true;
-        }
 
 
         
-    }
-
-    private void FixedUpdate()
-    {
-        timer += Time.deltaTime;
-        Globals.globaltimerR += Time.deltaTime;
     }
 }
