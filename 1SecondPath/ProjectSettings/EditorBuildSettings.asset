@@ -29,10 +29,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/nivel5R.unity
     guid: 71a570112538a5942962bfac38bf27c2
-  - enabled: 1
-    path: Assets/Scenes/nivel6R.unity
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/d81a14428b2fe104b8fbe9fd14720a4e
     guid: d81a14428b2fe104b8fbe9fd14720a4e
   - enabled: 1
     path: Assets/Scenes/nivel7R.unity
     guid: c75e6276f5812074baabee215b3d21bc
+  - enabled: 1
+    path: Assets/Scenes/nivel8R.unity
+    guid: 206b4ecf0c66641458c26068154ec040
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: e2ee2b6e0c56b3446b93cf2756d20f61
   m_configObjects: {}
