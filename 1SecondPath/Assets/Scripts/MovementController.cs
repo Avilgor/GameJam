@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour
 
     Rigidbody rb;
     AudioSource audio;
+    Animator anim;
     
     float velocity = 2f;
     private bool move;
@@ -20,7 +21,8 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        audio= GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         move = false;
         StartCoroutine(WaitMove(2f));
     }
@@ -33,30 +35,31 @@ public class MovementController : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
             {
                 rb.velocity = new Vector3(0f, 0f, 0f);
+                anim.SetBool("Walk", false);
             }
 
             if (Input.GetKey(KeyCode.W))
             {
                 rb.velocity = new Vector3(0f, velocity * Time.timeScale, 0f);
-            }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                key.GetComponent<ParticleSystem>().Play();
+                anim.SetBool("Walk", true);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 rb.velocity = new Vector3(0f, -velocity * Time.timeScale, 0f);
+                anim.SetBool("Walk", true);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-velocity * Time.timeScale, 0f, 0f);
+                anim.SetBool("Walk", true);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
+                anim.SetBool("Walk", true);
             }
         }
     }
