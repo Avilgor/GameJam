@@ -27,13 +27,11 @@ public class Maze : MonoBehaviour
         timer = 0f;
         rnd = new System.Random();
         enter = rnd.Next(0, Doors.Length);
-        Debug.Log("Enter: "+enter);
 
         do
         {
             exit = rnd.Next(0, Doors.Length);           
         } while (exit == enter);
-        Debug.Log("Exit: "+exit);
         switch (enter)
         {
             case 0:
