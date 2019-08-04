@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: GroovyBurgundy
   productName: 1SecondPath
-  defaultCursor: {fileID: 2800000, guid: 576bfa323564e5e4e8423b39be24af5b, type: 3}
+  defaultCursor: {fileID: 2800000, guid: d754c2212f84cbd4788c99fe0437798a, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
