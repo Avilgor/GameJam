@@ -28,7 +28,7 @@ public class MazeController : MonoBehaviour
         rnd = new System.Random();
         audio = GetComponent<AudioSource>();
         GameObject chosen = Instantiate(maze[rnd.Next(0, maze.Length)]);
-        timer = 10f;
+        timer = 60f;
         countdown.text = "01:" + ((int)timer).ToString();
         goal = false;
     }
