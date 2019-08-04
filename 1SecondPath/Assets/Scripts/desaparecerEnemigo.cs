@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class desaparecer : MonoBehaviour
+public class desaparecerEnemigo : MonoBehaviour
 {
 
     public float time;
     public SpriteRenderer sprender;
     float timer;
-    EdgeCollider2D edgy;
+    BoxCollider2D boxyE;
     public LayerMask playerLayer;
+    public Animator anim;
 
 
 
@@ -17,7 +18,8 @@ public class desaparecer : MonoBehaviour
     void Start()
     {
         sprender = GetComponent<SpriteRenderer>();
-        edgy = GetComponent<EdgeCollider2D>();
+        boxyE = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,19 +27,21 @@ public class desaparecer : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= time && !edgy.IsTouchingLayers(playerLayer))
+        if (timer >= time && !boxyE.IsTouchingLayers(playerLayer))
         {
+            anim.enabled = false;
             sprender.enabled = false;
         }
 
-        else if (timer >= time && edgy.IsTouchingLayers(playerLayer))
+        else if (timer >= time && boxyE.IsTouchingLayers(playerLayer))
         {
             sprender.enabled = true;
+            anim.enabled = true;
             timer = 0;
-            
+
         }
 
 
-        
+
     }
 }
