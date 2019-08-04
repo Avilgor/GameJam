@@ -78,6 +78,11 @@ public class movement : MonoBehaviour
             SceneManager.LoadScene(escenaActual);
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(0);
+        }
+
         //aquí va lo de Raycast para el CheckGround
 
         rayposition = transform.position + new Vector3 (0, 0.1f, 0);
