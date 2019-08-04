@@ -36,7 +36,20 @@ public class pmovementy : MonoBehaviour
         }
     }
 
+    /*void ConnectTo(Rigidbody2D player)
+    {
+        SliderJoint2D joint = GetComponent<SliderJoint2D>();
+        joint.connectedBody = player;
+    }
 
+    void OnCollisionEnter2D(Collision2D montarse)
+    {
+        if (montarse.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            ConnectTo(montarse.collider.GetComponent<Rigidbody2D>());
+        }
+    }*/
+    
 
     void FixedUpdate()
     { 

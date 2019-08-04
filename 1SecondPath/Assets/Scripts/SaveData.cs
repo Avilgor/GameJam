@@ -4,27 +4,15 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class SaveData 
+public class SaveData : MonoBehaviour
 {
-    public static string localPath = Application.dataPath + "/StreamingAssets/SaveData.txt";
-    StreamWriter writer = new StreamWriter(localPath, true);
-    StreamReader reader = new StreamReader(localPath);
-
-    public  void writeData(String input)
+    private void Start()
     {
-        
-        writer.WriteLine(input);
+        Encription encript = new Encription();
+        Globals.mazeWins++;
+        string localPath = Application.dataPath + "/StreamingAssets/SaveData.sav";
+        StreamWriter writer = new StreamWriter(localPath);
+        writer.WriteLine(encript.EncriptDecript("You finished the maze /"+Globals.mazeWins+"/ times!"));
         writer.Close();
-    }
-
-    public string readData(bool close = false)
-    {
-        string output="";
-        output = reader.ReadLine();
-        if (close)
-        {
-            reader.Close();
-        }
-        return output;
     }
 }
