@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class desaparecerEnemigo : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class desaparecerEnemigo : MonoBehaviour
         sprender = GetComponent<SpriteRenderer>();
         boxyE = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        escenaActual = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -43,5 +45,20 @@ public class desaparecerEnemigo : MonoBehaviour
 
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine ("muerte");
+        }
+    }
+
+    IEnumerator muerte()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(escenaActual);
     }
 }

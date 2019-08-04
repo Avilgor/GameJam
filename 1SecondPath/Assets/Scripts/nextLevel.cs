@@ -23,7 +23,14 @@ public class nextLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene (escenaActual + 1);
+            Destroy(other.gameObject);
+            StartCoroutine("next");
         }
+    }
+
+    IEnumerator next ()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(escenaActual + 1);
     }
 }
