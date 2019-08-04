@@ -7,7 +7,12 @@ public class btnController : MonoBehaviour
 {
     public void playMaze()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
+    }
+
+    public void playJump()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void ExitGame()
