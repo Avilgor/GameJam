@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: 6ceb6ff478ebc494e8257a675cb806e1
+guid: d5a8a6bac5a424d438e8167596dc44ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1461684549444182694
-    second: andar_0
+      213: 7850004379703459794
+    second: chestIdle_0
   - first:
-      213: 7151871423810812167
-    second: andar_1
+      213: -452662761159143944
+    second: chestIdle_1
   - first:
-      213: 6344414357037163946
-    second: andar_2
-  - first:
-      213: -1582253878934043206
-    second: andar_3
+      213: -6697449409494211008
+    second: chestIdle_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -122,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: andar_0
+      name: chestIdle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 57
         y: 0
         width: 64
-        height: 63
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b541d8b22c6b14a82122c544190c21
-      internalID: -1461684549444182694
+      spriteID: 0b2e8d6a8cb4a5b43a30997184dec612
+      internalID: 7850004379703459794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: andar_1
+      name: chestIdle_1
       rect:
         serializedVersion: 2
-        x: 74
+        x: 136
         y: 0
         width: 64
-        height: 56
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc68ce5d01338554fbf6ae6092206854
-      internalID: 7151871423810812167
+      spriteID: 61fef196f2b9fef428a9f4e81b23a030
+      internalID: -452662761159143944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: andar_2
+      name: chestIdle_2
       rect:
         serializedVersion: 2
-        x: 147
+        x: 218
         y: 0
         width: 64
-        height: 52
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,29 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d476b77e951ca4f4cb52dd6c53e05251
-      internalID: 6344414357037163946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: andar_3
-      rect:
-        serializedVersion: 2
-        x: 222
-        y: 0
-        width: 64
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1412a9b60dec46444a6d24c9beb8b5c2
-      internalID: -1582253878934043206
+      spriteID: fa07db2672b092f458036baef48a0f69
+      internalID: -6697449409494211008
       vertices: []
       indices: 
       edges: []

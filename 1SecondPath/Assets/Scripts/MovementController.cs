@@ -6,18 +6,18 @@ public class MovementController : MonoBehaviour
 {
     [SerializeField]
     GameObject maze;
+    [SerializeField]
+    GameObject key;
 
     Rigidbody rb;
-    Animator anim;
-    SpriteRenderer renderer;
+    //SpriteRenderer renderer;
     float velocity = 2f;
     private bool move;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        //renderer = GetComponent<SpriteRenderer>();
         move = false;
         StartCoroutine(WaitMove(2f));
     }
@@ -35,27 +35,27 @@ public class MovementController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 rb.velocity = new Vector3(0f, velocity * Time.timeScale, 0f);
-                anim.SetBool("Walk", false);
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                key.GetComponent<ParticleSystem>().Play();
             }
 
             if (Input.GetKey(KeyCode.S))
             {
                 rb.velocity = new Vector3(0f, -velocity * Time.timeScale, 0f);
-                anim.SetBool("Walk", false);
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 rb.velocity = new Vector3(-velocity * Time.timeScale, 0f, 0f);
-                anim.SetBool("Walk", true);
-                renderer.flipX = true;
+                //renderer.flipX = true;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
-                anim.SetBool("Walk",true);
-                renderer.flipX = false;
+                //renderer.flipX = false;
             }
         }
     }
@@ -64,7 +64,8 @@ public class MovementController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Goal")
         {
-            maze.GetComponent<MazeController>().goal = true;
+            GetComponent<ParticleSystem>().Play();
+            maze.GetComponent<MazeController>().goal = true;           
             Destroy(collision.gameObject);
         }       
     }
