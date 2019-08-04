@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovementController : MonoBehaviour
 {
@@ -60,6 +61,10 @@ public class MovementController : MonoBehaviour
             {
                 rb.velocity = new Vector3(velocity * Time.timeScale, 0f, 0f);
                 anim.SetBool("Walk", true);
+            }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(1);
             }
         }
     }
